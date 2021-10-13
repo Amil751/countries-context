@@ -1,0 +1,10 @@
+.filter{
+    display: flex;
+    align-items: center;
+}
+.filter select{
+    height: 50%;
+    border-radius: 5px;
+    font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

@@ -1,0 +1,15 @@
+.country_item{
+    border: rgb(119, 120, 131) solid 2px;
+    box-shadow: 2px 2px 4px 4px rgb(236, 239, 241);
+    border-radius: 10px;
+}
+
+.country_item li{
+    list-style: none;
+    
+}
+.country_item ul{
+    text-align: left;
+    padding-left: 20px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}

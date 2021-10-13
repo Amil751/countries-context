@@ -1,0 +1,15 @@
+.main_nav{
+    display: flex;
+    justify-content: space-between;
+    background-color: blue;
+    margin: 0px;
+    padding: 0px;
+    font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    border-radius: 10px;
+}
+.main_nav h3{
+    color:white;
+    margin-left: 10px;
+;
+}

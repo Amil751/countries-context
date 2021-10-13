@@ -1,0 +1,15 @@
+.search{
+    display:flex;
+    align-items: center;
+    color: white;
+    margin-right: 10%;
+    font-weight: 700;
+    font-family: Verdana, Geneva, Tahoma, sans-serif
+    
+    
+}
+.search input{
+    border: rgb(146, 99, 189) solid 2px;
+    border-radius: 5px;
+    margin-left: 10px;
+}
