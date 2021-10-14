@@ -1,4 +1,5 @@
 import { FunctionComponent, useContext } from "react";
+import { Link } from "react-router-dom";
 import { BorderContext } from "../../context/context";
 import { RootObject } from "../../types/types";
 import classes from "./CountryItem.module.css";
@@ -22,13 +23,8 @@ const CountryItem: FunctionComponent<IcountryProps> = (props) => {
           Area - {country.area} km<sup>2</sup>
         </li>
         <li>Capital - {country.capital}</li>
-
-        {/* <li>
-          {country.borders &&
-            country.borders.map((border) => (
-              <p key={Math.random()}>{border}</p>
-            ))}
-        </li> */}
+        <Link to="/detail"><li>More information...</li></Link>
+         
       </ul>
     </div>
   );

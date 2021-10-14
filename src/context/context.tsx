@@ -7,7 +7,7 @@ export const BorderContext = React.createContext<context>({
   setFilter: () => {},
   sort: "",
   setSort: () => {},
-  searchBox: "",
+  searchBox: [],
   setSearchBox: () => {},
   countries: [],
   addCountry: () => {},
@@ -15,7 +15,7 @@ export const BorderContext = React.createContext<context>({
 
 const ContextWrapper: React.FC = (props) => {
   const [country, setCountry] = useState<RootObject[]>([]);
-  const [search, setSearch] = useState("");
+  const [search, setSearch] = useState<RootObject[]>([]);
   const [sortCountry, setSortCountry] = useState<string>("");
   const [filterCountry, setFilterCountry] = useState<RootObject[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
@@ -24,7 +24,7 @@ const ContextWrapper: React.FC = (props) => {
       setCountry(data);
     
   };
-  const onSearch = (data: string) => {
+  const onSearch = (data:RootObject[]) => {
     setSearch(data);
   };
   const onSort = (option: string) => {

@@ -6,10 +6,11 @@ import CountryItem from "./CountryItem";
 import { BorderContext } from "../../context/context";
 import { fetchCountries } from "../../services/countriesApi";
 import classes from "./CountryList.module.css";
+import { Link } from "react-router-dom";
 
 const CountryList: FunctionComponent = () => {
   const global = useContext(BorderContext);
-  const { data, isLoading, isSuccess } = useQuery<RootObject[]>(
+  const { data, isLoading, isSuccess, error } = useQuery<RootObject[]>(
     "countries",
     fetchCountries
   );
@@ -40,7 +41,9 @@ const CountryList: FunctionComponent = () => {
         mapping.sort((a: RootObject, b: RootObject) => a.area - b.area);
         break;
       case "name":
-        mapping.sort((a,b) => (a.name > b.name) ? 1 : ((b.name > a.name) ? -1 : 0));
+        mapping.sort((a, b) =>
+          a.name > b.name ? 1 : b.name > a.name ? -1 : 0
+        );
         break;
     }
   }
@@ -58,7 +61,9 @@ const CountryList: FunctionComponent = () => {
     <div className={classes.country_list}>
       {isSuccess &&
         mapping.map((country: RootObject) => {
-          return <CountryItem key={country.name} country={country} />;
+          return (
+              <CountryItem key={country.name} country={country} />
+          );
         })}
     </div>
   );

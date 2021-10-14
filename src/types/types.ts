@@ -1,11 +1,11 @@
 export interface context {
-  loadingState:boolean;
-  filter:RootObject[];
-  setFilter:(filter:any)=>void;
-  sort:string;
-  setSort:(data:string)=>void;
-  searchBox:string;
-  setSearchBox:(data:string)=>void
+  loadingState: boolean;
+  filter: RootObject[];
+  setFilter: (filter: any) => void;
+  sort: string;
+  setSort: (data: string) => void;
+  searchBox: RootObject[];
+  setSearchBox: (data: RootObject[]) => void;
   countries: RootObject[];
   addCountry: (data: RootObject[]) => void;
 }
@@ -40,9 +40,12 @@ export interface RegionalBloc {
   acronym: string;
   name: string;
 }
-
+export interface Flag {
+  png: string;
+  svg: string;
+}
 export interface RootObject {
-  name: string;
+  name: any | string;
   topLevelDomain: string[];
   alpha2Code: string;
   alpha3Code: string;
@@ -67,4 +70,5 @@ export interface RootObject {
   regionalBlocs: RegionalBloc[];
   cioc: string;
   independent: boolean;
+  flags:Flag;
 }
