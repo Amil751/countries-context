@@ -1,4 +1,6 @@
 export interface context {
+  show:boolean,
+  showbar:(data:boolean)=>void
   loadingState: boolean;
   filter: RootObject[];
   setFilter: (filter: any) => void;
@@ -71,4 +73,5 @@ export interface RootObject {
   cioc: string;
   independent: boolean;
   flags:Flag;
+  maps:any;
 }

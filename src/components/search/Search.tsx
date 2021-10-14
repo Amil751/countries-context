@@ -1,7 +1,7 @@
 import {useContext ,useEffect,useRef, useState} from 'react';
 import { Link } from 'react-router-dom';
-import { BorderContext } from '../../../context/context';
-import { RootObject } from '../../../types/types';
+import { BorderContext } from '../../context/context';
+import { RootObject } from '../../types/types';
 import classes from './Search.module.css';
 
 const Search = () => {
@@ -26,9 +26,9 @@ const Search = () => {
               };
               searchFetch();
           },[searchedData])
-       
+     
     //const {data,isSuccess}=useQuery('search',searchFetch) 
-        
+        console.log(searchedData);
     const inputChange=(e:any)=>{
           setSearchedData(e.target.value)
     }
@@ -36,9 +36,9 @@ const Search = () => {
        
       
             global.setSearchBox(getsearchedData!);
-       
+           global.showbar(false)
     }
-   
+   console.log(global.show);
     return (
         <div className={classes.search}>
             <label htmlFor="search">Search</label>

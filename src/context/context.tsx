@@ -2,6 +2,8 @@ import React, { useState } from "react";
 import { RootObject, context } from "../types/types";
 
 export const BorderContext = React.createContext<context>({
+  show:true,
+  showbar:()=>{},
   loadingState: true,
   filter: [],
   setFilter: () => {},
@@ -19,6 +21,7 @@ const ContextWrapper: React.FC = (props) => {
   const [sortCountry, setSortCountry] = useState<string>("");
   const [filterCountry, setFilterCountry] = useState<RootObject[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
+  const [shower,setShower]=useState<boolean>(true)
   const addCountries = (data: RootObject[]) => {
    
       setCountry(data);
@@ -38,8 +41,12 @@ const ContextWrapper: React.FC = (props) => {
     setFilterCountry(filter)
     console.log(country);
   };
-
+   const showbarHandler=(data:boolean)=>{
+      setShower(data)
+   }
   const contextValue: context = {
+    show:shower,
+    showbar:showbarHandler,
     loadingState: loading,
     filter: filterCountry,
     setFilter: changeFilter,

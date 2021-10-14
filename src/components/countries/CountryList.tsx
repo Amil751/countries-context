@@ -21,7 +21,6 @@ const CountryList: FunctionComponent = () => {
   } else {
     mapping = global.filter;
   }
-  // console.log(sortAs);
   if (isLoading) {
     return <LinearProgress />;
   }
@@ -47,16 +46,6 @@ const CountryList: FunctionComponent = () => {
         break;
     }
   }
-
-  // useEffect(() => {
-  //
-  //       setCountries(data);
-  //     } catch (error) {
-  //       console.log("error");
-  //     }
-  //   };
-  //   fetchCountries();
-  // }, []);
   return (
     <div className={classes.country_list}>
       {isSuccess &&
