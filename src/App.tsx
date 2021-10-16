@@ -19,7 +19,7 @@ const App = () => {
         <Route path='/' exact>
           <CountryList />
         </Route>
-        <Route path="/detail">
+        <Route path="/detail/:ID">
           <CountryDetail/>
         </Route>
       </div>

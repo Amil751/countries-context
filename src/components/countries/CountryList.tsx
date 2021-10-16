@@ -1,12 +1,12 @@
 import { useQuery } from "react-query";
-import { FunctionComponent, useContext } from "react";
+import { FunctionComponent, useContext,useEffect } from "react";
 import { LinearProgress } from "@material-ui/core";
 import { RootObject } from "../../types/types";
 import CountryItem from "./CountryItem";
 import { BorderContext } from "../../context/context";
 import { fetchCountries } from "../../services/countriesApi";
 import classes from "./CountryList.module.css";
-import { Link } from "react-router-dom";
+
 
 const CountryList: FunctionComponent = () => {
   const global = useContext(BorderContext);
