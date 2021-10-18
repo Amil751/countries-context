@@ -3,10 +3,10 @@ import { BorderContext } from '../../../context/context';
 import classes from './Sort.module.css'
 
 const Sort:FunctionComponent =() => {
-    const global=useContext(BorderContext);
+    const {sortHandler}=useContext(BorderContext);
     return (
         <div className={classes.sort}>
-            <select onChange={(e)=>global.setSort( e.target.value)} >
+            <select onChange={(e)=>sortHandler( e.target.value)} >
                 <option selected disabled hidden > Sort by</option>
                 <option value="name">Name</option>
                 <option value="population">population</option>

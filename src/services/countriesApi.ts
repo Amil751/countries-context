@@ -1,5 +1,3 @@
-import { useContext } from "react";
-import { BorderContext } from "../context/context";
 // const global=useContext(BorderContext)
 // const a=global.searchBox;
 export const fetchCountries = async () => {
@@ -7,7 +5,3 @@ export const fetchCountries = async () => {
     return await response.json();
   };
 
-  export const searchFetch = async () => {
-    const response = await fetch("https://restcountries.com/v3.1/name/");
-    return await response.json();
-  };

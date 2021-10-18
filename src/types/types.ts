@@ -1,13 +1,13 @@
 export interface context {
-  show:boolean,
-  showbar:(data:boolean)=>void
+  visibility:boolean,
+  visibilityHandler:(data:boolean)=>void
   loadingState: boolean;
   filter: RootObject[];
-  setFilter: (filter: any) => void;
+  filterHandler: (filter: any) => void;
   sort: string;
-  setSort: (data: string) => void;
+  sortHandler: (data: string) => void;
   searchBox: RootObject[];
-  setSearchBox: (data: RootObject[]) => void;
+  searchHandler: (data: RootObject[]) => void;
   countries: RootObject[];
   addCountry: (data: RootObject[]) => void;
 }

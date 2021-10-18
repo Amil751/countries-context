@@ -1,5 +1,6 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { useQuery } from "react-query";
-import { FunctionComponent, useContext,useEffect } from "react";
+import { FunctionComponent, useContext, useEffect } from "react";
 import { LinearProgress } from "@material-ui/core";
 import { RootObject } from "../../types/types";
 import CountryItem from "./CountryItem";
@@ -7,26 +8,25 @@ import { BorderContext } from "../../context/context";
 import { fetchCountries } from "../../services/countriesApi";
 import classes from "./CountryList.module.css";
 
-
 const CountryList: FunctionComponent = () => {
-  const global = useContext(BorderContext);
+  const {loadingState,countries,filter,sort,addCountry} = useContext(BorderContext);
   const { data, isLoading, isSuccess, error } = useQuery<RootObject[]>(
     "countries",
     fetchCountries
   );
-  const sortAs = global.sort;
+  const sortAs = sort;
   let mapping: RootObject[] = [];
-  if (global.loadingState === true) {
-    mapping = global.countries;
+  if (loadingState === true) {
+    mapping = countries;
   } else {
-    mapping = global.filter;
+    mapping = filter;
   }
   if (isLoading) {
     return <LinearProgress />;
   }
   if (isSuccess) {
-    if (global.loadingState) {
-      global.addCountry(data!);
+    if (loadingState) {
+      addCountry(data!);
     }
 
     switch (sortAs) {
@@ -50,9 +50,7 @@ const CountryList: FunctionComponent = () => {
     <div className={classes.country_list}>
       {isSuccess &&
         mapping.map((country: RootObject) => {
-          return (
-              <CountryItem key={country.name} country={country} />
-          );
+          return <CountryItem key={country.name} country={country} />;
         })}
     </div>
   );

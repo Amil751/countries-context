@@ -1,3 +1,4 @@
+/* eslint-disable react/jsx-no-target-blank */
 import { FunctionComponent } from "react";
 import { RootObject } from "../../../types/types";
 import classes from "./SerachedCountries.module.css";
@@ -25,7 +26,7 @@ const SerachedCountries: FunctionComponent<IcountryProps> = (props) => {
         <li>
           <a target="_blank" href={`${country.maps.googleMaps}`}>
             look on map
-          </a>{" "}
+          </a>
         </li>
       </ul>
     </div>

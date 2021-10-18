@@ -3,11 +3,11 @@ import { BorderContext } from '../../../context/context';
 import classes from './Filter.module.css'
 
 const Filter:FunctionComponent =() => {
-    const global=useContext(BorderContext);
+    const {filterHandler}=useContext(BorderContext);
     
     return (
         <div className={classes.filter}>
-            <select onChange={global.setFilter} >
+            <select onChange={filterHandler} >
                 <option selected disabled hidden > Filter by</option>
                 <option value="Europe">Europe</option>
                 <option value="Asia">Asia</option>

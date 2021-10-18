@@ -5,7 +5,7 @@ import classes from "./Search.module.css";
 import { useHistory } from "react-router";
 import { BorderContext } from "../../../context/context";
 const Search = () => {
-  const global = useContext(BorderContext);
+  const {searchHandler,visibilityHandler,visibility} = useContext(BorderContext);
   const [searchedData, setSearchedData] = useState("");
   const [getsearchedData, setGetSearchedData] = useState<RootObject[]>([]);
   const history = useHistory();
@@ -34,24 +34,24 @@ const Search = () => {
     setSearchedData(e.target.value);
   };
   const onSearch = () => {
-    global.setSearchBox(getsearchedData!);
-    global.showbar(false);
+    searchHandler(getsearchedData!);
+    visibilityHandler(false);
     history.push("/search");
   };
   const keyDownHandler = (e: any) => {
     if (e.key === "Enter") {
-      global.setSearchBox(getsearchedData!);
-      global.showbar(false);
+      searchHandler(getsearchedData!);
+      visibilityHandler(false);
       history.push("/search");
     }
   };
   useEffect(() => {
     window.onpopstate = () => {
-      global.showbar(true);
+      visibilityHandler(true);
     };
   });
 
-  console.log(global.show);
+  console.log(visibility);
   return (
     <div className={classes.search}>
       <input
@@ -61,7 +61,8 @@ const Search = () => {
         onChange={inputChange}
         onKeyDown={keyDownHandler}
       />
-      <button onClick={onSearch}>Search</button>
+     <button onClick={onSearch}>Search</button>
+     
     </div>
   );
 };

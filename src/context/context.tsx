@@ -2,15 +2,15 @@ import React, { useState } from "react";
 import { RootObject, context } from "../types/types";
 
 export const BorderContext = React.createContext<context>({
-  show:true,
-  showbar:()=>{},
+  visibility: true,
+  visibilityHandler: () => {},
   loadingState: true,
   filter: [],
-  setFilter: () => {},
+  filterHandler: () => {},
   sort: "",
-  setSort: () => {},
+  sortHandler: () => {},
   searchBox: [],
-  setSearchBox: () => {},
+  searchHandler: () => {},
   countries: [],
   addCountry: () => {},
 });
@@ -21,39 +21,37 @@ const ContextWrapper: React.FC = (props) => {
   const [sortCountry, setSortCountry] = useState<string>("");
   const [filterCountry, setFilterCountry] = useState<RootObject[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
-  const [shower,setShower]=useState<boolean>(true)
+  const [visible, setVisible] = useState<boolean>(true);
   const addCountries = (data: RootObject[]) => {
-   
-      setCountry(data);
-    
+    setCountry(data);
   };
-  const onSearch = (data:RootObject[]) => {
+  const searchHandler= (data: RootObject[]) => {
     setSearch(data);
   };
-  const onSort = (option: string) => {
+  const sortHandler = (option: string) => {
     setSortCountry(option);
   };
-  const changeFilter = (e: any) => {
+  const filterHandler = (e: any) => {
     setLoading(false);
     const filter = country.filter(
       (country) => country.region === e.target.value
     );
-    setFilterCountry(filter)
+    setFilterCountry(filter);
     console.log(country);
   };
-   const showbarHandler=(data:boolean)=>{
-      setShower(data)
-   }
+  const showbarHandler = (data: boolean) => {
+    setVisible(data);
+  };
   const contextValue: context = {
-    show:shower,
-    showbar:showbarHandler,
+    visibility: visible,
+    visibilityHandler: showbarHandler,
     loadingState: loading,
     filter: filterCountry,
-    setFilter: changeFilter,
+    filterHandler: filterHandler,
     sort: sortCountry,
-    setSort: onSort,
+    sortHandler: sortHandler,
     searchBox: search,
-    setSearchBox: onSearch,
+    searchHandler: searchHandler,
     countries: country,
     addCountry: addCountries,
   };
