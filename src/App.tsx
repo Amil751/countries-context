@@ -1,11 +1,9 @@
 import CountryList from "./components/countries/CountryList";
 import Navbar from "./components/navigation/Navbar";
-import { BorderContext } from "./context/context";
-import { useContext } from "react";
 import "./App.css";
 import { Route } from "react-router";
 import SearchPage from "./components/Pages/SearchPage";
-import CountryDetail from "./components/countries/CountryDetail";
+import CountryDetail from "./components/Pages/CountryDetail";
 const App = () => {
   return (
     <div className="main">

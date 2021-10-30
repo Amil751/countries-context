@@ -4,9 +4,10 @@ import { RootObject } from "../../../types/types";
 import classes from "./Search.module.css";
 import { useHistory } from "react-router";
 import { BorderContext } from "../../../context/context";
-import { Button, TextField } from "@material-ui/core";
+import { Button } from "@material-ui/core";
 const Search = () => {
-  const {searchHandler,visibilityHandler,visibility} = useContext(BorderContext);
+  const { searchHandler, visibilityHandler, visibility } =
+    useContext(BorderContext);
   const [searchedData, setSearchedData] = useState("");
   const [getsearchedData, setGetSearchedData] = useState<RootObject[]>([]);
   const history = useHistory();
@@ -56,12 +57,24 @@ const Search = () => {
       <input
         type="text"
         id="search"
-        style={{backgroundClip:'white',height:'30px',border:'none',marginRight:'5px'}}
+        style={{
+          backgroundClip: "white",
+          height: "30px",
+          border: "none",
+          marginRight: "5px",
+        }}
         placeholder="Search"
         onChange={inputChange}
         onKeyDown={keyDownHandler}
       />
-     <Button onClick={onSearch} color='default' variant='contained' style={{maxHeight:'30px'}}>Search</Button>
+      <Button
+        onClick={onSearch}
+        color="default"
+        variant="contained"
+        style={{ maxHeight: "30px" }}
+      >
+        Search
+      </Button>
     </div>
   );
 };

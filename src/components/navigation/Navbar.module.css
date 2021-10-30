@@ -13,3 +13,25 @@
     margin-left: 10px;
 ;
 }
+.search{
+    display: flex;
+    width: 30%;
+}
+.sort_filter{
+        display: flex;
+        justify-content: space-between ;
+        width: 15%;
+}
+@media (max-width:550px) {
+    .main_nav{
+        flex-direction: column;
+    }
+    .search{
+        margin: 5px auto;
+        width: auto;
+    }
+    .sort_filter{
+        margin: 5px auto;
+        width: auto;
+    }
+}

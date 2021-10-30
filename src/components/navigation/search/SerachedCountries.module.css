@@ -1,17 +1,23 @@
-.search_item{
-    padding: 0px;
-    width: 50%;
-    display: flex;
-    padding: 50px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+.search_item {
+  padding: 0px;
+  width: 50%;
+  display: flex;
+  padding: 50px;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
 }
 
-.search_item ul{
-    margin-top: 0px;
-    list-style-type: none;
-    
+.search_item ul {
+  margin-top: 0px;
+  list-style-type: none;
 }
-.search_item li{
-    text-align: left;
-    font-style: italic;
+.search_item li {
+  text-align: left;
+  font-style: italic;
+}
+@media (max-width:550px) {
+    .search_item{
+        display: flex;
+        flex-direction: column;
+        width: auto;
+    }
 }

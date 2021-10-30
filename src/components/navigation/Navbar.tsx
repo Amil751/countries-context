@@ -7,23 +7,19 @@ import { useContext } from "react";
 import { Box } from "@material-ui/core";
 
 const Navbar = () => {
-  const {visibility} = useContext(BorderContext);
+  const { visibility } = useContext(BorderContext);
   return (
     <Box className={classes.main_nav}>
       <h3>ALL countries</h3>
       {visibility && (
-        <Box
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            width: "15%",
-          }}
-        >
+        <Box className={classes.sort_filter} >
           <Sort />
           <Filter />
         </Box>
       )}
-      <Search />
+      <Box className={classes.search}>
+        <Search />
+      </Box>
     </Box>
   );
 };
