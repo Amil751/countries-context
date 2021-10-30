@@ -4,14 +4,15 @@ import Sort from "./sort/Sort";
 import Filter from "./filter.tsx/Filter";
 import { BorderContext } from "../../context/context";
 import { useContext } from "react";
+import { Box } from "@material-ui/core";
 
 const Navbar = () => {
   const {visibility} = useContext(BorderContext);
   return (
-    <div className={classes.main_nav}>
+    <Box className={classes.main_nav}>
       <h3>ALL countries</h3>
       {visibility && (
-        <div
+        <Box
           style={{
             display: "flex",
             justifyContent: "space-between",
@@ -20,10 +21,10 @@ const Navbar = () => {
         >
           <Sort />
           <Filter />
-        </div>
+        </Box>
       )}
       <Search />
-    </div>
+    </Box>
   );
 };
 

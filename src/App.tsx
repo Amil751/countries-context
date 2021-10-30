@@ -7,8 +7,6 @@ import { Route } from "react-router";
 import SearchPage from "./components/Pages/SearchPage";
 import CountryDetail from "./components/countries/CountryDetail";
 const App = () => {
-  const a = useContext(BorderContext);
-  console.log("app component", a.countries);
   return (
     <div className="main">
       <div className="App">

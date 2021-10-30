@@ -1,23 +1,15 @@
 import React, { useContext } from "react";
 import { useParams } from "react-router";
 import { BorderContext } from "../../context/context";
+import Back from "../backtoHome/Back";
 import classes from "./CountryDetail.module.css";
-import { Link } from "react-router-dom";
-import { RootObject } from "../../types/types";
 
 const CountryDetail: React.FC = () => {
-  const {visibilityHandler,countries} = useContext(BorderContext);
+  const { countries } = useContext(BorderContext);
   const params = useParams<any>();
   const paramsid: string = params.ID;
   const detail = countries.find((item) => item.name === paramsid);
-  const showHandler = () => {
-    visibilityHandler(true);
-  };
-  // localStorage.setItem('user', JSON.stringify(detail));
-  // const a:string|null=localStorage.getItem('user');
-  // if(a){
-  //   var details = JSON.parse(a);
-  // }
+
   if (detail) {
     localStorage.setItem("user", JSON.stringify(detail));
   }
@@ -25,9 +17,10 @@ const CountryDetail: React.FC = () => {
   const details = JSON.parse(a);
   return (
     <div className={classes.main_detail}>
-      <Link to="/" className={classes.backlink}>
-        <p onClick={showHandler}>Back to home</p>
-      </Link>
+      <div className={classes.back}>
+        <Back />
+      </div>
+
       <div className={classes.image}>
         <img src={`${details?.flag}`} alt={`${details?.name}`} width="100%" />
       </div>

@@ -9,18 +9,23 @@ import { fetchCountries } from "../../services/countriesApi";
 import classes from "./CountryList.module.css";
 
 const CountryList: FunctionComponent = () => {
-  const {loadingState,countries,filter,sort,addCountry} = useContext(BorderContext);
+  const { loadingState, countries, filter, sort, addCountry } =
+    useContext(BorderContext);
   const { data, isLoading, isSuccess, error } = useQuery<RootObject[]>(
     "countries",
     fetchCountries
   );
   const sortAs = sort;
-  let mapping: RootObject[] = [];
-  if (loadingState === true) {
-    mapping = countries;
-  } else {
-    mapping = filter;
-  }
+  let mapping = countries;
+ 
+    mapping = [];
+    if (loadingState === true) {
+      mapping = countries;
+    } else {
+      mapping = filter;
+    }
+ 
+
   if (isLoading) {
     return <LinearProgress />;
   }

@@ -5,7 +5,7 @@ export interface context {
   filter: RootObject[];
   filterHandler: (filter: any) => void;
   sort: string;
-  sortHandler: (data: string) => void;
+  sortHandler: (data: any) => void;
   searchBox: RootObject[];
   searchHandler: (data: RootObject[]) => void;
   countries: RootObject[];

@@ -4,6 +4,7 @@ import { RootObject } from "../../../types/types";
 import classes from "./Search.module.css";
 import { useHistory } from "react-router";
 import { BorderContext } from "../../../context/context";
+import { Button, TextField } from "@material-ui/core";
 const Search = () => {
   const {searchHandler,visibilityHandler,visibility} = useContext(BorderContext);
   const [searchedData, setSearchedData] = useState("");
@@ -29,7 +30,6 @@ const Search = () => {
   }, [searchedData]);
 
   //const {data,isSuccess}=useQuery('search',searchFetch)
-  console.log(searchedData);
   const inputChange = (e: any) => {
     setSearchedData(e.target.value);
   };
@@ -50,19 +50,18 @@ const Search = () => {
       visibilityHandler(true);
     };
   });
-
   console.log(visibility);
   return (
     <div className={classes.search}>
       <input
         type="text"
         id="search"
+        style={{backgroundClip:'white',height:'30px',border:'none',marginRight:'5px'}}
         placeholder="Search"
         onChange={inputChange}
         onKeyDown={keyDownHandler}
       />
-     <button onClick={onSearch}>Search</button>
-     
+     <Button onClick={onSearch} color='default' variant='contained' style={{maxHeight:'30px'}}>Search</Button>
     </div>
   );
 };

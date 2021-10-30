@@ -1,3 +1,4 @@
+import { Box, MenuItem, Select } from '@material-ui/core';
 import React, { FunctionComponent, useContext } from 'react';
 import { BorderContext } from '../../../context/context';
 import classes from './Filter.module.css'
@@ -6,16 +7,16 @@ const Filter:FunctionComponent =() => {
     const {filterHandler}=useContext(BorderContext);
     
     return (
-        <div className={classes.filter}>
-            <select onChange={filterHandler} >
-                <option selected disabled hidden > Filter by</option>
-                <option value="Europe">Europe</option>
-                <option value="Asia">Asia</option>
-                <option value="Americas">America</option>
-                <option value="Africa">Africa</option>
-                <option value="Oceania">Asia</option>
-            </select>
-        </div>
+        <Box className={classes.filter}>
+            <Select onChange={(e:any)=>filterHandler(e)} variant="outlined" style={{backgroundColor:'white' ,maxHeight:'30px'}}>
+                <MenuItem selected disabled hidden > Filter by</MenuItem>
+                <MenuItem value="Europe">Europe</MenuItem>
+                <MenuItem value="Asia">Asia</MenuItem>
+                <MenuItem value="Americas">America</MenuItem>
+                <MenuItem value="Africa">Africa</MenuItem>
+                <MenuItem value="Oceania">Oceania</MenuItem>
+            </Select>
+        </Box>
     );
 };
 

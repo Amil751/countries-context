@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useHistory, useLocation } from "react-router";
 import { RootObject, context } from "../types/types";
 
 export const BorderContext = React.createContext<context>({
@@ -22,23 +23,36 @@ const ContextWrapper: React.FC = (props) => {
   const [filterCountry, setFilterCountry] = useState<RootObject[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [visible, setVisible] = useState<boolean>(true);
+  const location = useLocation();
+  const history = useHistory();
+  const urlSearchParams = new URLSearchParams(location.search);
+  const a = urlSearchParams.get("filter");
+  console.log(location);
   const addCountries = (data: RootObject[]) => {
     setCountry(data);
   };
-  const searchHandler= (data: RootObject[]) => {
+  const searchHandler = (data: RootObject[]) => {
     setSearch(data);
   };
-  const sortHandler = (option: string) => {
-    setSortCountry(option);
+  const sortHandler = (e: any) => {
+    setSortCountry(e.target.value);
   };
+  //--------filter ----
+  
   const filterHandler = (e: any) => {
     setLoading(false);
-    const filter = country.filter(
-      (country) => country.region === e.target.value
-    );
-    setFilterCountry(filter);
-    console.log(country);
+    history.push(`?filter=${e.target.value}`);
   };
+  
+  useEffect(() => {
+    if (country.length && a) {
+      const filter = country.filter((item) => item.region === a);
+      setFilterCountry(filter);
+      setLoading(false);
+    }
+  }, [country, a]);
+
+  // -----filter-----
   const showbarHandler = (data: boolean) => {
     setVisible(data);
   };
