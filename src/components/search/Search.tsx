@@ -1,9 +1,9 @@
 import { useContext, useEffect, useState } from "react";
 
-import { RootObject } from "../../../types/types";
+import { RootObject } from "../../types/types";
 import classes from "./Search.module.css";
-import { useHistory } from "react-router";
-import { BorderContext } from "../../../context/context";
+import { useHistory, useLocation } from "react-router";
+import { BorderContext } from "../../context/context";
 import { Button } from "@material-ui/core";
 const Search = () => {
   const { searchHandler, visibilityHandler, visibility } =
@@ -11,10 +11,13 @@ const Search = () => {
   const [searchedData, setSearchedData] = useState("");
   const [getsearchedData, setGetSearchedData] = useState<RootObject[]>([]);
   const history = useHistory();
+  const location=useLocation();
+  const urlSearchParams = new URLSearchParams(location.search);
+  const c=urlSearchParams.get('search');
   useEffect(() => {
     const searchFetch = async () => {
       try {
-        if (searchedData !== "") {
+        if (searchedData !== ""&& searchedData!==' ') {
           console.log("before fetch", searchedData);
           const response = await fetch(
             `https://restcountries.com/v3.1/name/${searchedData}`
@@ -30,20 +33,26 @@ const Search = () => {
     searchFetch();
   }, [searchedData]);
 
+  useEffect(()=>{
+    if(c){
+      setSearchedData(c);
+    }
+   
+  },[c])
   //const {data,isSuccess}=useQuery('search',searchFetch)
   const inputChange = (e: any) => {
-    setSearchedData(e.target.value);
+    history.push(`/search/?search=${e.target.value}`);
   };
+  searchHandler(getsearchedData!);
   const onSearch = () => {
-    searchHandler(getsearchedData!);
+    
     visibilityHandler(false);
-    history.push("/search");
+    history.push(`/search/?search=${searchedData}`);
   };
   const keyDownHandler = (e: any) => {
     if (e.key === "Enter") {
-      searchHandler(getsearchedData!);
       visibilityHandler(false);
-      history.push("/search");
+      history.push(`/search/?search=${searchedData}`);
     }
   };
   useEffect(() => {

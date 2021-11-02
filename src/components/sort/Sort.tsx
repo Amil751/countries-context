@@ -1,6 +1,6 @@
 import { Box, MenuItem, Select } from '@material-ui/core';
 import React, { FunctionComponent, useContext } from 'react';
-import { BorderContext } from '../../../context/context';
+import { BorderContext } from '../../context/context';
 import classes from './Sort.module.css'
 
 const Sort:FunctionComponent =() => {

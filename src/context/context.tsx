@@ -27,21 +27,37 @@ const ContextWrapper: React.FC = (props) => {
   const history = useHistory();
   const urlSearchParams = new URLSearchParams(location.search);
   const a = urlSearchParams.get("filter");
-  console.log(location);
+  const b = urlSearchParams.get("sort");
   const addCountries = (data: RootObject[]) => {
     setCountry(data);
   };
   const searchHandler = (data: RootObject[]) => {
     setSearch(data);
   };
+
+  //-------sort-----------
   const sortHandler = (e: any) => {
-    setSortCountry(e.target.value);
+    if(a){
+      history.push(`?filter=${a}&sort=${e.target.value}`)
+    }
+    else{
+      history.push(`?sort=${e.target.value}`)
+    }
+       
   };
-  //--------filter ----
-  
+  useEffect(()=>{
+    if(b){
+      setSortCountry(b);
+      }
+  },[b])
+  //------sort----------------------
+
+
+  //----------filter -------------
+
   const filterHandler = (e: any) => {
     setLoading(false);
-    history.push(`?filter=${e.target.value}`);
+    history.push(`?filter=${e.target.value}&sort=${b}`);
   };
   
   useEffect(() => {
@@ -51,8 +67,8 @@ const ContextWrapper: React.FC = (props) => {
       setLoading(false);
     }
   }, [country, a]);
+  // ---------filter----------
 
-  // -----filter-----
   const showbarHandler = (data: boolean) => {
     setVisible(data);
   };

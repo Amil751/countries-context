@@ -1,7 +1,7 @@
 import { useContext } from "react";
 import { BorderContext } from "../../context/context";
 import classes from './SearchPage.module.css';
-import SerachedCountries from "../navigation/search/SerachedCountries";
+import SerachedCountries from "../search/SerachedCountries";
 import Back from "../backtoHome/Back";
 const SearchPage = () => {
   const {searchBox} = useContext(BorderContext);

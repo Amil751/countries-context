@@ -1,7 +1,7 @@
-import Search from "./search/Search";
+import Search from "../search/Search";
 import classes from "./Navbar.module.css";
-import Sort from "./sort/Sort";
-import Filter from "./filter.tsx/Filter";
+import Sort from "../sort/Sort";
+import Filter from "../filter.tsx/Filter";
 import { BorderContext } from "../../context/context";
 import { useContext } from "react";
 import { Box } from "@material-ui/core";

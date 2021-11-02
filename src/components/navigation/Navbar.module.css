@@ -15,7 +15,7 @@
 }
 .search{
     display: flex;
-    width: 30%;
+    margin-right: 50px;
 }
 .sort_filter{
         display: flex;

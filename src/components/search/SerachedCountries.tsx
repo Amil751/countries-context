@@ -1,6 +1,6 @@
 /* eslint-disable react/jsx-no-target-blank */
 import { FunctionComponent } from "react";
-import { RootObject } from "../../../types/types";
+import { RootObject } from "../../types/types";
 import classes from "./SerachedCountries.module.css";
 interface IcountryProps {
   country: RootObject;
